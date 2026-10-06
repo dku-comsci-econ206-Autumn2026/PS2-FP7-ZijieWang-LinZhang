@@ -2,11 +2,11 @@
 
 **Two users, three connected rounds, and Low / Medium / High fees.**
 
-[Open updated Colab](https://colab.research.google.com/drive/1E5NDNUU62rHPwp9UCG9oEHXplz3PG9EJ?usp=sharing) · [Hugging Face behavioral interface](https://huggingface.co/spaces/dku-comsci-econ206-2026/SubmitOrWait) · [Proposal PDF](paper/Strategic_Fee_Level_Choice_Proposal.pdf)
+[Open updated Colab](https://colab.research.google.com/drive/1E5NDNUU62rHPwp9UCG9oEHXplz3PG9EJ?usp=sharing) · [Hugging Face behavioral interface](https://huggingface.co/spaces/dku-comsci-econ206-2026/SubmitOrWait)
 
 ![Research design: private urgency and waiting, three-round L/M/H fee choice, priority allocation, and information conditions](assets/fee_choice_teaser.png)
 
-*Research design from Figure 1 of the revised proposal.*
+*Research design: private urgency and waiting, three-round fee choice, priority allocation, and information conditions.*
 
 ## Research question and model
 
@@ -85,14 +85,13 @@ For Colab, open the updated link and choose **Runtime → Run all**. The noteboo
 
 ## Repository contents and evidence limits
 
-- `assets/fee_choice_teaser.png`: updated research-design diagram from the revised proposal.
+- `assets/fee_choice_teaser.png`: current research-design diagram.
 - `notebooks/`: updated clean source and fresh executed copy.
 - `scripts/reproduce.py`: full-run exporter and comparison checks.
 - `results/`: actual CSVs, eleven figures, and run manifest.
-- `paper/`: supplied updated proposal PDF. Its body uses the dynamic model, but some appendices still describe the earlier binary model; see [proposal corrections](docs/PROPOSAL_CORRECTIONS.md).
 - `docs/`: artifact descriptions, reproduction details, and evidence status.
 
-The old notebook generator and validation script have been removed because they recreate or require the obsolete H/L model. Old Overleaf source was removed from the active package because it does not match the supplied new PDF. The old teaser was replaced with Figure 1 from the revised proposal. The original ZIP retains that historical version. Current editable proposal source must be exported from the authors' updated Overleaf project before it can be included as current source.
+The old notebook generator and validation script have been removed because they recreate or require the obsolete H/L model.
 
 No participant dataset, live Algorand validation, or causal treatment estimate is included. The Hugging Face link is a behavioral interface, not evidence of measured human compliance.
 
@@ -100,4 +99,4 @@ No participant dataset, live Algorand validation, or causal treatment estimate i
 
 Lin Zhang (`lin.zhang@dukekunshan.edu.cn`) and Zijie Wang (`zijie.wang@dukekunshan.edu.cn`). Team 7, COMSCI/ECON 206: Computational Microeconomics; instructor Professor Luyao Zhang.
 
-Original project code and documentation: MIT. Proposal references retain their cited authors' rights.
+Original project code and documentation: MIT.
