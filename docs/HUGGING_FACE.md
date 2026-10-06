@@ -1,35 +1,9 @@
-# Hugging Face behavioral game
+# Behavioral interface
 
-## Open the current artifact
+[Hugging Face Space](https://huggingface.co/spaces/dku-comsci-econ206-2026/SubmitOrWait). The URL retains its historical SubmitOrWait name.
 
-[Fee Coordination Game](https://huggingface.co/spaces/dku-comsci-econ206-2026/SubmitOrWait)
+The authors report that the Space has been updated. The supplied notebook and proposal body specify three connected L/M/H rounds, fixed private types, waiting transitions, and nonbinding recommendations. Current Space source and revision could not be independently fetched in this session. The September 2026 revision and eight-round H/L description from the previous repository have therefore been removed.
 
-Direct URL:
+Before claiming parity, record the actual Space revision and verify fee costs, type parameters, confirmation and waiting rules, belief elicitation, signal probability, and opponent tremble against the notebook. The coordinator uses both users' states while the other user's type remains private to the participant. This information assumption must be explicit.
 
-```text
-https://huggingface.co/spaces/dku-comsci-econ206-2026/SubmitOrWait
-```
-
-The current public Space was verified on September 27, 2026. The inspected Space revision was `7b3094fad8bc2ce4068d4e95694bf01f6e50390c`.
-
-## What the game implements
-
-- eight independent one-shot rounds;
-- private Urgent or Patient transaction types;
-- simultaneous High-fee or Low-fee choice;
-- baseline incomplete-information and signal conditions;
-- Urgent payoffs `(R_H,R_L,R_C)=(8,2,1)`;
-- Patient payoffs `(R_H,R_L,R_C)=(5,4,1)`;
-- baseline simulated-opponent strategy `Urgent -> H, Patient -> L`;
-- pre-choice belief, confidence, and short-reason elicitation;
-- post-choice revelation of the other user's hidden type and action;
-- congestion, fee differentiation, type sorting, welfare, and planner comparisons; and
-- a downloadable session record.
-
-## Relationship to the proposal
-
-The Space implements the proposal's behavioral artifact rather than a deployed Algorand rule. Each round is independent, so the interface does not turn the static model into a repeated dynamic game. The signal is a nonbinding recommendation and does not reveal the other user's private type.
-
-## Privacy and evidence status
-
-The current interface states that no personal information is collected or transmitted. Its co-player choices and reported outcomes are simulated from the model. Any voluntary participant record exported from the interface is not, by itself, a completed laboratory dataset or causal treatment estimate.
+Do not infer a current privacy policy or empirical dataset from the former interface documentation. Participant observations and privacy procedures must be documented from the actual current Space before an empirical claim.

@@ -1,0 +1,16 @@
+Executed code cell 1
+Executed code cell 2
+Executed code cell 3
+Executed code cell 4
+Executed code cell 5
+Executed code cell 6
+Executed code cell 7
+Executed code cell 8
+Executed code cell 9
+Executed code cell 10
+            same_fee_rate  mean_fee_expenditure  mean_welfare_per_round  mean_wait_after priority_alignment urgent_confirmation
+condition                                                                                                                      
+complete         0.029163              2.905053                2.598150         0.659102           0.984772            0.827554
+incomplete       0.333553              2.352120                3.056973         0.547900           0.871067            0.663947
+signal           0.051980              2.812303                2.677993         0.649707           0.979861            0.812451
+PASS: saved notebook aggregates reproduced; 900,000 rows; 11 figures.

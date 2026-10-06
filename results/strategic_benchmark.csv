@@ -1,0 +1,7 @@
+type,wait,payoff_lower_fee_vs_H,expected_payoff_H_vs_H,H_is_strict_best_response_to_H
+Urgent,0,-2,1.5,True
+Urgent,1,-4,0.5,True
+Urgent,2,-6,-0.5,True
+Patient,0,-1,0.5,True
+Patient,1,-2,0.0,True
+Patient,2,-3,-0.5,True

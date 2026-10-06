@@ -1,53 +1,11 @@
-# Reproducibility guide
+# Reproducibility
 
-## Environment
+The README gives the exact inputs, runtime, fixed commit record, commands, output table, and metric denominators. `results/run_manifest.json` records the tested notebook hash, environment, RNG seeds, output hashes, and verification result.
 
-Recommended: Python 3.10 or newer.
+Run `python scripts/reproduce.py` from the repository root after installing `requirements.txt`. All ten code cells are executed in source order with their code unchanged. Only their final expression is evaluated separately to save its displayed value; Matplotlib show calls export figures. The runner sets the working directory to `results/` so the notebook's existing CSV export cell writes there.
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
-```
+The full run contains 900,000 main simulation rows and 990,000 additional sensitivity rows across eleven compliance settings. The runner checks all eighteen aggregate values against the supplied notebook's saved display, checks the six strict best responses, session lengths, and plot count. It generates a fresh executed notebook with outputs. It does not use participant data.
 
-## Fresh notebook run
+The tested commit identifies the local source snapshot. If files are uploaded through GitHub's web UI, GitHub creates a different commit: rerun at that actual commit and update the README and manifest accordingly. A local hash must not be presented as an existing GitHub commit.
 
-```bash
-jupyter nbconvert \
-  --to notebook \
-  --execute notebooks/Algorand_PS2_Fee_Choice_Game.ipynb \
-  --output Algorand_PS2_Fee_Choice_Game.executed.ipynb \
-  --output-dir notebooks \
-  --ExecutePreprocessor.timeout=600
-```
-
-The main seed is `206`. Sensitivity sections use explicitly listed seed ranges. The notebook prints or stores all model parameters needed to interpret its simulated outputs.
-
-Validate both notebook artifacts with:
-
-```bash
-python scripts/validate_notebooks.py
-```
-
-## Rebuild the clean notebook
-
-```bash
-python scripts/build_fee_choice_notebook.py
-```
-
-Run the clean notebook again after rebuilding it.
-
-## Minimal verification checklist
-
-1. Both notebooks contain 28 cells.
-2. Every code cell in the executed notebook has an execution count.
-3. No code cell contains an error output.
-4. The baseline payoffs are Urgent `(8,2,1)` and Patient `(5,4,1)`.
-5. The baseline separating strategy is `Urgent -> H, Patient -> L`.
-6. Each simulated pair is independent.
-7. Every numerical result is labeled simulated rather than empirical.
-
-## Proposal source
-
-The paper can be compiled from `paper/overleaf/main.tex` in an Overleaf project or a compatible local LaTeX installation. The supplied PDF is the submission copy provided with this repository.
+The README maps the poster's numerical comparison to the full-precision baseline CSVs and generated plots, using the authors' confirmation of the intended poster contents. Retain those files with the poster and use the actual tested GitHub commit in its caption.

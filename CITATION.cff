@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this research artifact, please cite the proposal and repository."
-title: "Strategic Fee-Level Choice under Incomplete Information: An Anti-Coordination Game on Algorand"
+title: "Strategic Fee Choice and Transaction-Priority Allocation under Incomplete Information"
 type: software
 authors:
   - family-names: Zhang
@@ -9,12 +9,13 @@ authors:
   - family-names: Wang
     given-names: Zijie
     email: zijie.wang@dukekunshan.edu.cn
-date-released: 2026-09-27
+date-released: 2026-10-06
 license: MIT
 repository-code: "https://github.com/z2005lin/PS2_Zijie_Lin"
 keywords:
   - Bayesian game
-  - anti-coordination
+  - dynamic fee choice
+  - transaction-priority allocation
   - transaction fees
   - Algorand
   - computational microeconomics
