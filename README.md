@@ -1,3 +1,7 @@
+![Current A0 poster preview](assets/poster_preview.png)
+
+[Open the current A0 poster PDF](poster/PS2-FP7-ZijieLin-A0-Poster-W7.pdf)
+
 # Strategic Fee Choice and Transaction-Priority Allocation under Incomplete Information
 
 **Two users, three connected rounds, and Low / Medium / High fees.**
@@ -62,7 +66,7 @@ Round-level outputs show why the horizon matters: incomplete-information collisi
 
 In the sensitivity simulation, moving signal following from 0 to 1 lowers collisions from **33.32% to 3.02%** and raises priority alignment from **87.15% to 98.54%**. Fee expenditure rises from **2.3507 to 2.9059**, while welfare falls from **3.0569 to 2.6081**. These endpoints use separate Monte Carlo seeds from the baseline; small numerical differences are expected.
 
-**Outputs corresponding to the poster:** the table and linked plots above provide the poster's quantitative comparison and its allocation–cost interpretation, as confirmed by the authors. The CSVs retain the full-precision values behind the displayed rounding.
+**Outputs corresponding to the poster:** the table and linked plots above reproduce the current poster's quantitative comparison and allocation–cost interpretation. The CSVs retain the full-precision values behind the displayed rounding.
 
 ## Tested version and run steps
 
@@ -85,11 +89,13 @@ For Colab, open the updated link and choose **Runtime → Run all**. The noteboo
 
 ## Repository contents and evidence limits
 
+- `assets/poster_preview.png`: preview rendered directly from the current A0 poster PDF.
+- `poster/`: current A0 poster PDF.
 - `assets/fee_choice_teaser.png`: current research-design diagram.
 - `notebooks/`: updated clean source and fresh executed copy.
 - `scripts/reproduce.py`: full-run exporter and comparison checks.
 - `results/`: actual CSVs, eleven figures, and run manifest.
-- `docs/`: artifact descriptions, reproduction details, and evidence status.
+- `docs/`: artifact descriptions, reproduction details, evidence status, and the current research document.
 
 The old notebook generator and validation script have been removed because they recreate or require the obsolete H/L model.
 
