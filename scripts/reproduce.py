@@ -26,18 +26,30 @@ import matplotlib.pyplot as plt
 import IPython
 from IPython.utils.capture import capture_output
 
-source = ROOT / 'notebooks/PS2_Dynamic_Fee_Choice.ipynb'
+source = ROOT / 'notebooks/dynamic_fee_choice.ipynb'
 nb = json.loads(source.read_text())
-namespace = {'__name__': '__main__'}
 plot_count = 0
 active_outputs = []
+figure_names = [f'figure_{i:02d}.png' for i in range(1, 12)] + [
+    'noisy_urgency_priority_alignment.png', 'noisy_urgency_same_fee_collision.png',
+    'noisy_urgency_fee_expenditure.png', 'noisy_urgency_user_welfare.png',
+    'noisy_urgency_mean_wait.png']
+
+def display_values(*values):
+    for value in values:
+        data = {'text/plain': [repr(value)]}
+        if hasattr(value, '_repr_html_'):
+            data['text/html'] = [value._repr_html_()]
+        active_outputs.append({'output_type': 'display_data', 'metadata': {}, 'data': data})
+
+namespace = {'__name__': '__main__', 'display': display_values}
 
 def save_figures(*args, **kwargs):
     global plot_count
     for number in plt.get_fignums():
         fig = plt.figure(number)
         plot_count += 1
-        path = OUT / f'figure_{plot_count:02d}.png'
+        path = OUT / figure_names[plot_count - 1]
         fig.savefig(path, dpi=150)
         buf = io.BytesIO()
         fig.savefig(buf, format='png', dpi=100)
@@ -82,14 +94,28 @@ expected = np.array([[.0292,2.9051,2.5982,.6591,.984772,.827554],
 np.testing.assert_allclose(summary[columns].astype(float).to_numpy(), expected, rtol=0, atol=0.000051)
 assert namespace['strategic_benchmark']['H_is_strict_best_response_to_H'].all()
 assert len(namespace['simulation']) == 900_000
-assert plot_count == 11
+assert plot_count == 16
 assert len(namespace['sensitivity']) == 11
 assert all(namespace['simulation'].groupby(['condition','session']).size() == 3)
+noisy = namespace['noisy_summary'].set_index('error_rate')
+noise_columns = ['same_fee_rate', 'priority_alignment', 'urgent_confirmation',
+                 'mean_fee_expenditure', 'mean_welfare_per_round', 'mean_wait_after']
+noise_expected = np.array([
+    [.051980, .97986083, .81245057, 2.8123, 2.6780, .6497],
+    [.058717, .86361566, .75388824, 2.8038, 2.5383, .6499],
+    [.065520, .77050036, .69745418, 2.7952, 2.4076, .6492]])
+np.testing.assert_allclose(noisy.loc[[0., .1, .2], noise_columns].astype(float).to_numpy(),
+                           noise_expected, rtol=0, atol=0.000051)
+np.testing.assert_allclose(noisy.loc[0., columns].astype(float).to_numpy(),
+                           summary.loc['signal', columns].astype(float).to_numpy(),
+                           rtol=0, atol=1e-12)
+assert len(namespace['noisy_simulation']) == 900_000
+assert all(namespace['noisy_simulation'].groupby(['error_rate','session']).size() == 3)
 namespace['strategic_benchmark'].to_csv(OUT / 'strategic_benchmark.csv', index=False)
 nb['metadata'].setdefault('kernelspec',{'display_name':'Python 3','language':'python','name':'python3'})
-(ROOT/'notebooks/PS2_Dynamic_Fee_Choice.executed.ipynb').write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n')
+(OUT/'dynamic_fee_choice.executed.ipynb').write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n')
 try:
-    commit = subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    commit = subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip() if (ROOT/'.git').exists() else None
 except subprocess.CalledProcessError:
     commit = None
 manifest = {'tested_commit':commit, 'python':platform.python_version(),
@@ -98,9 +124,14 @@ manifest = {'tested_commit':commit, 'python':platform.python_version(),
     'sessions_per_condition':100000,'rounds':3,'rows':900000,
     'base_seed':206,'condition_seeds':{'complete':206,'incomplete':1000206,'signal':2000206},
     'sensitivity_sessions_per_rho':30000,'sensitivity_seed_rule':'206 + int(rho * 10000) + 2000000',
+    'noise_error_rates':[0.0,0.1,0.2], 'noise_sessions_per_rate':100000,
+    'noise_rows':900000, 'noise_behavior_seed':2000206,'noise_type_error_seed':3000206,
     'executed_code_cells':count,'figures':plot_count,'aggregate_comparison':'PASS; atol=0.000051',
+    'noise_aggregate_comparison':'PASS; 18 metrics; atol=0.000051',
+    'zero_noise_baseline_comparison':'PASS; atol=1e-12',
     'poster_numbers_source':'condition_summary.csv; correspondence confirmed by authors',
-    'files_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.csv'))}}
+    'generated_only_files':['noisy_urgency_round_records.csv'],
+    'files_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.csv')) if p.name != 'noisy_urgency_round_records.csv'}}
 (OUT/'run_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 print(summary.to_string())
-print('PASS: saved notebook aggregates reproduced; 900,000 rows; 11 figures.')
+print('PASS: baseline and noisy-urgency aggregates reproduced; 900,000 baseline rows; 900,000 noisy-urgency rows; 16 figures.')

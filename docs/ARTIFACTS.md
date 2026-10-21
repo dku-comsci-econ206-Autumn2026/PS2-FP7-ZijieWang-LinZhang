@@ -1,6 +1,6 @@
 # Current research artifacts
 
-Updated October 14, 2026.
+Updated October 21, 2026.
 
 - [A0 poster](../poster/PS2-FP7-ZijieLin-A0-Poster-W7.pdf)
 - [Research proposal, Version 2](proposal/PS2-FP7-ZijieLin-V2-W7.pdf)
@@ -9,7 +9,7 @@ The PDF files are the authors' supplied W7 versions, preserved byte-for-byte. `a
 
 The Hugging Face behavioral interface is https://huggingface.co/spaces/dku-comsci-econ206-2026/SubmitOrWait.
 
-The computational source and outputs are unchanged. The README retains the actual tested computational commit `726511c24480e1d95ed4a611672a214334679625`; this document update does not claim a new computational run.
+The updated computational source is [`notebooks/dynamic_fee_choice.ipynb`](../notebooks/dynamic_fee_choice.ipynb). The current run manifest records its local verification; the earlier baseline test at commit `726511c24480e1d95ed4a611672a214334679625` is preserved separately in `results/baseline_run_manifest.json`.
 
 ## File integrity
 

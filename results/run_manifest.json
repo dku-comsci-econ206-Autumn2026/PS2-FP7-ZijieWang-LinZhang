@@ -1,13 +1,13 @@
 {
-  "tested_commit": "726511c24480e1d95ed4a611672a214334679625",
-  "python": "3.12.2",
+  "tested_commit": null,
+  "python": "3.13.1",
   "versions": {
     "numpy": "2.4.4",
     "pandas": "3.0.2",
     "matplotlib": "3.10.8",
     "IPython": "9.15.0"
   },
-  "notebook_sha256": "3e0edcc48f58684bb086e3c0b23778343aaaf70d3e9a81695bde0d4e3fc5df62",
+  "notebook_sha256": "906a0653d6f344da13e89a177c38c140c82831119c8c1669252a439488b091d8",
   "sessions_per_condition": 100000,
   "rounds": 3,
   "rows": 900000,
@@ -19,12 +19,27 @@
   },
   "sensitivity_sessions_per_rho": 30000,
   "sensitivity_seed_rule": "206 + int(rho * 10000) + 2000000",
-  "executed_code_cells": 10,
-  "figures": 11,
+  "noise_error_rates": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "noise_sessions_per_rate": 100000,
+  "noise_rows": 900000,
+  "noise_behavior_seed": 2000206,
+  "noise_type_error_seed": 3000206,
+  "executed_code_cells": 13,
+  "figures": 16,
   "aggregate_comparison": "PASS; atol=0.000051",
+  "noise_aggregate_comparison": "PASS; 18 metrics; atol=0.000051",
+  "zero_noise_baseline_comparison": "PASS; atol=1e-12",
   "poster_numbers_source": "condition_summary.csv; correspondence confirmed by authors",
+  "generated_only_files": [
+    "noisy_urgency_round_records.csv"
+  ],
   "files_sha256": {
     "condition_summary.csv": "0d32e0f9f38e1421130ff7a1f920345d55c848b64cf20b303e3f6c60e065df64",
+    "noisy_urgency_summary.csv": "aeac85a36d2d996ca66651d6f2eb5996a48ad112ec93be64cda483bfe2bda121",
     "round_summary.csv": "316006344a4bb515051a5461ddd8ed79cf591b7e98276556183bd89a7f5b3adb",
     "signal_sensitivity.csv": "e89a8f45a05a4b22c6ca399ef5453a51162d9d8a514bb92b3c509de17e4d0aaf",
     "strategic_benchmark.csv": "92b0fb1338cb94f01694aa3ce5d5c465358f633c15c947296ea9c5f80163008b"
