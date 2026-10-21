@@ -1,6 +1,6 @@
 ![Current A0 poster preview](assets/poster_preview.png)
 
-[Open the current A0 poster PDF](poster/PS2-FP7-ZijieLin-A0-Poster-W7.pdf)
+[Open the current A0 poster PDF](poster/Final-FP7-ZijieLin-A0-Poster.pdf)
 
 # Strategic Fee Choice and Transaction-Priority Allocation under Incomplete Information
 
